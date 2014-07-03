@@ -1,0 +1,37 @@
+<%= form_for(@wedge) do |f| %>
+  <% if @wedge.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@wedge.errors.count, "error") %> prohibited this wedge from being saved:</h2>
+
+      <ul>
+      <% @wedge.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :input_type %><br>
+    <%= f.text_field :input_type %>
+  </div>
+  <div class="field">
+    <%= f.label :output_type %><br>
+    <%= f.text_field :output_type %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :handles_lists? %><br>
+    <%= f.check_box :handles_lists %>
+  </div>
+  <div class="field">
+    <%= f.label :output_is_list? %><br>
+    <%= f.check_box :output_is_list %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
