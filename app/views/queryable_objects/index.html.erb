@@ -1,0 +1,27 @@
+<h1>Listing queryable_objects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @queryable_objects.each do |queryable_object| %>
+      <tr>
+        <td><%= queryable_object.name %></td>
+        <td><%= queryable_object.description %></td>
+        <td><%= link_to 'Show', queryable_object %></td>
+        <td><%= link_to 'Edit', edit_queryable_object_path(queryable_object) %></td>
+        <td><%= link_to 'Destroy', queryable_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Queryable object', new_queryable_object_path %>

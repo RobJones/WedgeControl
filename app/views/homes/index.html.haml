@@ -1,0 +1,37 @@
+=javascript_include_tag "dropdown"
+
+%h1 Listing homes
+
+.btn-group
+  %button(type="button" class="btn btn-danger") Action
+  %button(type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown")
+    %span.caret
+    %span.sr-only Toggle Dropdown
+  %ul.dropdown-menu(role="menu")
+    %li
+      %a(href="#") Action
+    %li
+      %a(href="#") Another action
+    %li
+      %a(href="#") Something else here
+    %li.divider
+    %li
+      %a(href="#") Separated link
+
+
+%table
+  %tr
+    %th Title
+    %th
+    %th
+    %th
+
+  - @homes.each do |home|
+    %tr
+      %td= home.title
+      %td= link_to 'Show', home
+      %td= link_to 'Edit', edit_home_path(home)
+      %td= link_to 'Destroy', home, method: :delete, :data => { confirm: 'Are you sure?' }
+%br
+
+= link_to 'New Home', new_home_path
