@@ -11,19 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140702193113) do
+ActiveRecord::Schema.define(version: 20140703162415) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "homes", force: true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "queryable_objects", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "wedges", force: true do |t|
-    t.string   "input_type"
-    t.string   "output_type"
     t.string   "title"
     t.boolean  "handles_lists"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "output_is_list"
+    t.integer  "input_type_id"
+    t.integer  "output_type_id"
   end
 
 end

@@ -38,3 +38,7 @@ gem 'spring',        group: :development
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+
+# Rob's stuff:
+gem 'haml'
+gem "haml-rails"

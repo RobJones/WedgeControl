@@ -69,6 +69,6 @@ class WedgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wedge_params
-      params.require(:wedge).permit(:input_type, :output_type, :title, :handles_lists, :output_is_list)
+      params.require(:wedge).permit(:input_type_id, :output_type_id, :title, :handles_lists, :output_is_list)
     end
 end

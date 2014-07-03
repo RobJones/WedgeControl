@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :homes
+
+  resources :queryable_objects
+
   resources :wedges
 
   # The priority is based upon order of creation: first created -> highest priority.
