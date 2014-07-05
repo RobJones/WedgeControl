@@ -4,6 +4,7 @@ class HomesController < ApplicationController
   # GET /homes
   # GET /homes.json
   def index
+    @wedges = Wedge.where(input_type_id: '7')
     @homes = Home.all
   end
 
