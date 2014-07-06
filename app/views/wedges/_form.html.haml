@@ -1,28 +1,19 @@
-= form_for(@wedge) do |f|
+= form_for @wedge do |f|
   - if @wedge.errors.any?
     #error_explanation
-      %h2
-        = pluralize(@wedge.errors.count, "error")
-        prohibited this wedge from being saved:
+      %h2= "#{pluralize(@wedge.errors.count, "error")} prohibited this wedge from being saved:"
       %ul
-        = @wedge.errors.full_messages.each do |message| 
-          %li= message 
+        - @wedge.errors.full_messages.each do |msg|
+          %li= msg
 
-  .field
-    =f.label :input_type
-  =f.collection_select :input_type_id, QueryableObject.all, :id, :name
-  .field
-    =f.label :output_type
-  =f.collection_select :output_type_id, QueryableObject.all, :id, :name
   .field
     = f.label :title
-    = f.text_field :title 
+    = f.text_field :title
   .field
-    = f.label :handles_lists?
-    = f.check_box :handles_lists 
+    = f.label :input_type
+    = f.text_field :input_type_id
   .field
-    = f.label :output_is_list? 
-    = f.check_box :output_is_list
+    = f.label :description
+    = f.text_area :description
   .actions
-    = f.submit 
-
+    = f.submit 'Save'

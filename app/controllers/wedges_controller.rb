@@ -10,6 +10,13 @@ class WedgesController < ApplicationController
   # GET /wedges/1
   # GET /wedges/1.json
   def show
+    @wedge = Wedge.find(params[:id])
+    respond_to do |format|
+      if @wedge
+        format.html {render :show }
+        format.js   {render :show }
+      end
+    end
   end
 
   # GET /wedges/new
@@ -69,6 +76,6 @@ class WedgesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def wedge_params
-      params.require(:wedge).permit(:input_type_id, :output_type_id, :title, :handles_lists, :output_is_list)
+      params.require(:wedge).permit(:title, :input_type_id, :output_type_id, :description)
     end
 end

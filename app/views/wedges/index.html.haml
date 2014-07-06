@@ -1,27 +1,23 @@
 %h1 Listing wedges
 
-%table.table
-  %thead
+%table
+  %tr
+    %th Title
+    %th Input type
+    %th Description
+    %th
+    %th
+    %th
+
+  - @wedges.each do |wedge|
     %tr
-      %th Title 
-      %th Input type 
-      %th Output type 
-      %th Handles lists? 
-      %th Output is list? 
-  %tbody
-    - @wedges.each do |wedge|
-      %tr
-        %td= wedge.title  
-        %td= wedge.input_type.name  
-        %td= wedge.output_type.name  
-        %td= wedge.handles_lists  
-        %td= wedge.output_is_list  
-        %td
-          =link_to 'Show', wedge  
-          |
-          = link_to 'Edit', edit_wedge_path(wedge)  
-          |
-          = link_to 'Destroy', wedge, method: :delete, data: { confirm: 'Are you sure?' }  
+      %td= wedge.title
+      %td= wedge.input_type.name
+      %td= wedge.description
+      %td= link_to 'Show', wedge
+      %td= link_to 'Edit', edit_wedge_path(wedge)
+      %td= link_to 'Destroy', wedge, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
 %br
 
-= link_to 'New Wedge', new_wedge_path 
+= link_to 'New Wedge', new_wedge_path

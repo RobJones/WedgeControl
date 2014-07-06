@@ -1,0 +1,22 @@
+%button(type="button" class="btn btn-info" id="wedge#{wedge.id}")= wedge.title
+%button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown")
+  %span.caret
+  %span.sr-only Toggle Dropdown
+%ul.dropdown-menu(role="menu")
+  - wedge.wedge_elements.each do |we|
+    %li(data-outputwedge="#{we.output_wedge_id}" data-weid="#{we.id}" class="wedge_#{wedge.id}_link")
+      %a(href="")= we.title
+  %li.divider
+  %li
+    %a(href="")= wedge.wedge_elements.count
+
+:coffee
+$(document).on "page:change", ->
+  $("li.wedge_#{wedge.id}_link").click (event) -> 
+    event.preventDefault()
+    selected_text = $(this).text()
+    $("button#wedge#{wedge.id}").text(selected_text)
+    output_wedge = $(this).data("outputwedge")
+    $.get( "/wedges/" + output_wedge + '.js' )    
+    
+    

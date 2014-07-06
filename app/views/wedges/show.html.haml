@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @wedge.title
+%p
+  %b Input type:
+  = @wedge.input_type.try(:name)
+%p
+  %b Description:
+  = @wedge.description
+
+= link_to 'Edit', edit_wedge_path(@wedge)
+\|
+= link_to 'Back', wedges_path

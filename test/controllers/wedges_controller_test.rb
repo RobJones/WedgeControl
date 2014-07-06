@@ -18,7 +18,7 @@ class WedgesControllerTest < ActionController::TestCase
 
   test "should create wedge" do
     assert_difference('Wedge.count') do
-      post :create, wedge: { handles_list?: @wedge.handles_list?, input_type: @wedge.input_type, output_type: @wedge.output_type, title: @wedge.title }
+      post :create, wedge: { description: @wedge.description, input_type: @wedge.input_type, output_type: @wedge.output_type, title: @wedge.title }
     end
 
     assert_redirected_to wedge_path(assigns(:wedge))
@@ -35,7 +35,7 @@ class WedgesControllerTest < ActionController::TestCase
   end
 
   test "should update wedge" do
-    patch :update, id: @wedge, wedge: { handles_list?: @wedge.handles_list?, input_type: @wedge.input_type, output_type: @wedge.output_type, title: @wedge.title }
+    patch :update, id: @wedge, wedge: { description: @wedge.description, input_type: @wedge.input_type, output_type: @wedge.output_type, title: @wedge.title }
     assert_redirected_to wedge_path(assigns(:wedge))
   end
 

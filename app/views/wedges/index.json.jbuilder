@@ -1,4 +1,4 @@
 json.array!(@wedges) do |wedge|
-  json.extract! wedge, :id, :input_type, :output_type, :title, :handles_list?
+  json.extract! wedge, :id, :title, :input_type, :output_type, :description
   json.url wedge_url(wedge, format: :json)
 end

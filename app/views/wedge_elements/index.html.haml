@@ -1,0 +1,29 @@
+%h1 Listing wedge elements
+
+%table.table
+  %thead
+    %tr
+      %th Title 
+      %th Input type 
+      %th Output type 
+      %th Handles lists? 
+      %th Output is list? 
+      %th Output Wedge id
+  %tbody
+    - @wedge_elements.each do |element|
+      %tr
+        %td= element.title || '-'  
+        %td= element.input_type.try(:name) || '-'
+        %td= element.output_type.try(:name)  || '-'
+        %td= element.handles_lists  
+        %td= element.output_is_list  
+        %td= element.output_wedge.try(:title)
+        %td
+          =link_to 'Show', element  
+          |
+          = link_to 'Edit', edit_wedge_element_path(element)  
+          |
+          = link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' }  
+%br
+
+= link_to 'New Wedge Element', new_wedge_element_path 

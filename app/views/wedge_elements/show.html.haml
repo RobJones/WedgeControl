@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%h3 input type
+%p=@wedge_element.input_type.try(:name) || '-'
+%h3 output type
+%p=@wedge_element.output_type.try(:name) || '-'
+%h3 title
+%p=@wedge_element.title || '-' 
+%h3 handles lists
+%p=@wedge_element.handles_lists
+%h3 output is list
+%p=@wedge_element.output_is_list 
+
+
+
+= link_to 'Edit', edit_wedge_element_path(@wedge_element)
+\|
+= link_to 'Back', wedge_elements_path

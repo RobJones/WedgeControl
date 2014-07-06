@@ -1,0 +1,31 @@
+= form_for(@wedge_element) do |f|
+  - if @wedge_element.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@wedge_element.errors.count, "error")
+        prohibited this wedge from being saved:
+      %ul
+        = @wedge_element.errors.full_messages.each do |message| 
+          %li= message 
+
+  .field
+    =f.label :input_type
+    =f.collection_select :input_type_id, QueryableObject.all, :id, :name
+  .field
+    =f.label :output_type
+    =f.collection_select :output_type_id, QueryableObject.all, :id, :name
+  .field
+    = f.label :title
+    = f.text_field :title 
+  .field
+    = f.label :handles_lists?
+    = f.check_box :handles_lists 
+  .field
+    = f.label :output_is_list? 
+    = f.check_box :output_is_list
+  .field
+    =f.label :output_wedge
+    =f.collection_select :output_wedge_id, Wedge.all, :id, :title
+  .actions
+    = f.submit 
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140703162415) do
+ActiveRecord::Schema.define(version: 20140706075651) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140703162415) do
     t.datetime "updated_at"
   end
 
-  create_table "wedges", force: true do |t|
+  create_table "wedge_elements", force: true do |t|
     t.string   "title"
     t.boolean  "handles_lists"
     t.datetime "created_at"
@@ -37,6 +37,21 @@ ActiveRecord::Schema.define(version: 20140703162415) do
     t.boolean  "output_is_list"
     t.integer  "input_type_id"
     t.integer  "output_type_id"
+    t.integer  "output_wedge_id"
+  end
+
+  create_table "wedge_elements_wedges", id: false, force: true do |t|
+    t.integer "wedge_element_id"
+    t.integer "wedge_id"
+  end
+
+  create_table "wedges", force: true do |t|
+    t.string   "title"
+    t.integer  "input_type_id"
+    t.integer  "output_type_id"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

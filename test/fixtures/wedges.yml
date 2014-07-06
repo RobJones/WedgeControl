@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  input_type: MyString
-  output_type: MyString
   title: MyString
-  handles_list?: false
+  input_type: 
+  output_type: 
+  description: MyText
 
 two:
-  input_type: MyString
-  output_type: MyString
   title: MyString
-  handles_list?: false
+  input_type: 
+  output_type: 
+  description: MyText
