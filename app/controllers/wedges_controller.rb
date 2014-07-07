@@ -10,13 +10,7 @@ class WedgesController < ApplicationController
   # GET /wedges/1
   # GET /wedges/1.json
   def show
-    @wedge = Wedge.find(params[:id])
-    respond_to do |format|
-      if @wedge
-        format.html {render :show }
-        format.js   {render :show }
-      end
-    end
+
   end
 
   # GET /wedges/new

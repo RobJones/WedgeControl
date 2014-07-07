@@ -1,29 +1,24 @@
 
 %h1 Listing homes
 
-.btn-group
-  =render @wedges
+=render @wedges
 #after_wedges
 
-
-
-%table
-  %tr
-    %th Title
-    %th
-    %th
-    %th
-
-  - @homes.each do |home|
+.well
+  %table
     %tr
-      %td= home.title
-      %td= #link_to 'Show', home
-      %td= #link_to 'Edit', edit_home_path(home)
-      %td= #link_to 'Destroy', home, method: :delete, :data => { confirm: 'Are you sure?' }
-%br
+      %th Title
+      %th
+      %th
+      %th
 
-=# link_to 'New Home', new_home_path
+    - @homes.each do |home|
+      %tr
+        %td= home.title
+        %td= #link_to 'Show', home
+        %td= #link_to 'Edit', edit_home_path(home)
+        %td= #link_to 'Destroy', home, method: :delete, :data => { confirm: 'Are you sure?' }
+  %br
 
-:coffee
-  $ ->
-    $('.dropdown-toggle').dropdown()
+  =# link_to 'New Home', new_home_path
+

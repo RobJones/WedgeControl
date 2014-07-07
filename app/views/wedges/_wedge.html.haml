@@ -1,22 +1,25 @@
-%button(type="button" class="btn btn-info" id="wedge#{wedge.id}")= wedge.title
-%button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown")
-  %span.caret
-  %span.sr-only Toggle Dropdown
-%ul.dropdown-menu(role="menu")
-  - wedge.wedge_elements.each do |we|
-    %li(data-outputwedge="#{we.output_wedge_id}" data-weid="#{we.id}" class="wedge_#{wedge.id}_link")
-      %a(href="")= we.title
-  %li.divider
-  %li
-    %a(href="")= wedge.wedge_elements.count
+.btn-group
+  %button(type="button" class="btn btn-info" id="title-button#{wedge.id}")= wedge.title
+  %button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdown-button#{wedge.id}")
+    %span.caret
+    %span.sr-only Toggle Dropdown
+  %ul.dropdown-menu(role="menu")
+    - wedge.wedge_elements.each do |we|
+      %li(data-outputwedge="#{we.output_wedge_id}" data-weid="#{we.id}" class="wedge_#{wedge.id}_link")
+        %a(href="")= we.title
+    %li.divider
+    %li
+      %a(href="")= wedge.wedge_elements.count
 
-:coffee
-$(document).on "page:change", ->
-  $("li.wedge_#{wedge.id}_link").click (event) -> 
-    event.preventDefault()
-    selected_text = $(this).text()
-    $("button#wedge#{wedge.id}").text(selected_text)
-    output_wedge = $(this).data("outputwedge")
-    $.get( "/wedges/" + output_wedge + '.js' )    
-    
+  :coffee
+  $(document).on "page:change", ->
+    #prime dropdowns so they fire
+    $("button#dropdown-button#{wedge.id}").dropdown()  
+    #capture clicks on wedge elements. 
+    $("li.wedge_#{wedge.id}_link").click (event) -> 
+      event.preventDefault()
+      selected_text = $(this).text()
+      $("button#title_button#{wedge.id}").text(selected_text)
+      output_wedge = $(this).data("outputwedge")
+      $.get( "/wedges/" + output_wedge + '.js' )    
     
