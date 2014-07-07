@@ -11,13 +11,16 @@
     %li
       %a(href="")= wedge.wedge_elements.count
 
-  :coffee
-  $(document).on "page:change", ->
+:coffee
+  $ ->
+    $( ".btn-group" ).each (index) ->
+      $(this).attr("id", index+1)
     #prime dropdowns so they fire
     $("button#dropdown-button#{wedge.id}").dropdown()  
     #capture clicks on wedge elements. 
     $("li.wedge_#{wedge.id}_link").click (event) -> 
       event.preventDefault()
+      alert $(this).parents("div.btn-group").nextAll().size()
       selected_text = $(this).text()
       $("button#title_button#{wedge.id}").text(selected_text)
       output_wedge = $(this).data("outputwedge")
