@@ -1,4 +1,4 @@
-.btn-group
+.btn-group(data-wedge-id="#{wedge.id}")
   %button(type="button" class="btn btn-info" id="title-button#{wedge.id}")= wedge.title
   %button(type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" id="dropdown-button#{wedge.id}")
     %span.caret
@@ -13,20 +13,21 @@
 
   :coffee
     $ ->
-      $( ".btn-group" ).each (index) ->
-        $(this).attr("id", index+1)
       #prime dropdowns so they fire
       $("button#dropdown-button#{wedge.id}").dropdown()  
       #capture clicks on wedge elements. 
       $("li.wedge_#{wedge.id}_link").click (event) -> 
         #stop the page reloading
         event.preventDefault()
-        #get rid of any btn-groups after the one that's just been clicked
+        #get rid of any btn-groups to the right of the one that's just been clicked
         $(this).parents("div.btn-group").nextAll('div.btn-group').remove()
-        selected_text = $(this).text()
         #make the wedge display the text of the wedge element that was clicked
-        $("button#title_button#{wedge.id}").text(selected_text)
+        clicked_text = $(this).text()
+        $("button#title_button#{wedge.id}").text(clicked_text)
         output_wedge = $(this).data("outputwedge")
+        current_wedge_list = $('div.btn-group').map -> 
+          $(this).data('wedge-id')
+        #alert current_wedge_list.get()
         #fetch the wedge (via js) called for by whichever wedge elements was clicked
-        $.get( "/wedges/" + output_wedge + '.js' )    
+        $.get( "/wedges/" + output_wedge + '.js', {wedge_ids: current_wedge_list.get()} )    
     
