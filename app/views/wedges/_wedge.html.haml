@@ -27,7 +27,7 @@
         output_wedge = $(this).data("outputwedge")
         current_wedge_list = $('div.btn-group').map -> 
           $(this).data('wedge-id')
-        #alert current_wedge_list.get()
         #fetch the wedge (via js) called for by whichever wedge elements was clicked
+        # .get() turns JQuery object collection into plain array
         $.get( "/wedges/" + output_wedge + '.js', {wedge_ids: current_wedge_list.get()} )    
     
